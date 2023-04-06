@@ -2,8 +2,8 @@
 
 Democrit is a protocol and system for executing [**atomic
 trades**](https://github.com/xaya/xaya/blob/master/doc/xaya/trading.md)
-on the XAYA platform.  This allows players to trade their game assets for
-cryptocurrency (CHI) in a fully trustless manner.
+on the SpaceXpanse platform.  This allows players to trade their game assets for
+cryptocurrency (ROD) in a fully trustless manner.
 
 With the Democrit project, game developers have all the tools
 ready made for integrating an easy-to-use market place powered by atomic
@@ -17,13 +17,13 @@ both participants of a trade (buyer and seller) are online at the same time
 (e.g. while playing the game itself), and communicate with each other while
 negotiating and finalising the trade.  This is the simplest and most
 flexbile way to do atomic trades, but in theory it is also possible
-to do non-interactive trades with XAYA (as described in the general
+to do non-interactive trades with SpaceXpanse (as described in the general
 documentation for [atomic
 trades](https://github.com/xaya/xaya/blob/master/doc/xaya/trading.md)).
 
 Each player or trader that is currently online has their own list of orders
-that they are willing to perform, e.g. sell 10 gold coins for 5 CHI each,
-or buy a Vorpal sword for 100 CHI.  These orders are published through
+that they are willing to perform, e.g. sell 10 gold coins for 5 ROD each,
+or buy a Vorpal sword for 100 ROD.  These orders are published through
 a broadcast system, e.g. over XMPP with [XID](https://github.com/xaya/xid).
 Other players can then choose an order they would like to accept.
 
@@ -34,7 +34,7 @@ the on-chain transaction that finishes the trade through a direct communiation
 ## Integration with Games
 
 Democrit takes care of most of the underlying logic for handling
-general atomic trades on XAYA.  To launch a decentralised market for
+general atomic trades on SpaceXpanse.  To launch a decentralised market for
 assets of a particular game, the game developer (or in fact any
 interested developer) just needs to implement game-specific functions
 that tell Democrit
@@ -61,7 +61,7 @@ and can thus at the end decide whether or not to execute the trade;
 they can perhaps even wait for some time and see how the market moves
 in the mean time, and then only execute the trade if it is beneficial for them.
 
-In the context of XAYA games, this is most likely not as big an issue
+In the context of SpaceXpanse games, this is most likely not as big an issue
 as for e.g. decentralised cryptocurrency exchanges.  But one potential issue
 is that once the first party has signed a trade, they do not know when exactly
 or if at all the second party will counter-sign and finish the transaction.
@@ -74,11 +74,11 @@ another party instead.  For this to work properly, we need two things:
 
 Even after signing the first "half" of an atomic transaction, it must
 be possible to cancel the trade and invalidate that signature if the
-trade has not gone through yet.  In XAYA, this is easily possible by
+trade has not gone through yet.  In SpaceXpanse, this is easily possible by
 simply double-spending one of the inputs for the original transaction.
 
 This can be done by the seller through updating their account name
-(e.g. just to `{}`), or by the buyer by sending one of the CHI inputs
+(e.g. just to `{}`), or by the buyer by sending one of the ROD inputs
 used back to themselves.
 
 In the context of Democrit, the **taker will be the party that signs first**.
@@ -109,7 +109,7 @@ however, use the [*bare hash* (`btxid`)](https://github.com/xaya/xaya/pull/105)
 of the transaction, since that won't change by the signatures of the
 counterparty and still identifies the trade uniquely.
 
-To utilise this, Democrit uses a custom dApp / GSP on XAYA to track executed
+To utilise this, Democrit uses a custom dApp / GSP on SpaceXpanse to track executed
 trades by `btxid`.  All that needs to be done is mark the trade as also
 being a move for the `g/dem` game:
 
@@ -137,7 +137,7 @@ transaction fees**.  Since the buyer is the one funding the transaction
 and also in control of how many inputs there will be (and thus how large
 the transaction will end up), it makes the most sense.
 
-Note in this context that transaction fees for trades on XAYA will likely
+Note in this context that transaction fees for trades on SpaceXpanse will likely
 be negligible.  They are comparable to gas fees on Ethereum-based market
 places, and *not* the same thing as e.g. a 2% market fee typically
 paid by sellers.
@@ -167,7 +167,7 @@ the following steps are then performed in order to finalise the trade:
 1. The taker initiates the trade by contacting the maker and telling
    them the order and exact amount of asset they are interested in.
 1. If the taker is the seller, they also send two addresses of their wallet,
-   one for the name output and one for receiving the payment in CHI.
+   one for the name output and one for receiving the payment in ROD.
 1. If the maker is the seller, they reply with those two addresses
    in a follow-up message.
 1. Before the seller sends their addresses, they also lock the name output
@@ -181,7 +181,7 @@ the following steps are then performed in order to finalise the trade:
    their own inputs and change address, and the move data for the trade.
    They also sign their inputs to the transaction and store the
    signatures locally.
-1. The buyer locks the CHI outputs used for funding the transaction
+1. The buyer locks the ROD outputs used for funding the transaction
    in their wallet to prevent accidentally spending them while the
    trade is in progress.
 1. If the buyer is the taker, they add the signatures and share the
@@ -200,7 +200,7 @@ Note that both parties in this scheme know the full (unsigned) transaction
 before sharing their own signatures with the other party, so they can
 track the transaction by `btxid` in the Democrit GSP from that point on.
 If it takes too long, they can cancel any time by just double spending one
-of their inputs (CHI or name).  *Before* they shared their signatures
+of their inputs (ROD or name).  *Before* they shared their signatures
 with the counterparty, they can "cancel" the trade simply by abandoning it.
 
 Until the trade has gone through, both participants can check all the
