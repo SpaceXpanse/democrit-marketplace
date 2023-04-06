@@ -1,7 +1,7 @@
 # Democrit
 
 Democrit is a protocol and system for executing [**atomic
-trades**](https://github.com/xaya/xaya/blob/master/doc/xaya/trading.md)
+trades**](https://github.com/spacexpanse/rod-coin-wallet/blob/0.6.8/doc/spacexpanse/trading.md)
 on the SpaceXpanse platform.  This allows players to trade their game assets for
 cryptocurrency (ROD) in a fully trustless manner.
 
@@ -19,12 +19,12 @@ negotiating and finalising the trade.  This is the simplest and most
 flexbile way to do atomic trades, but in theory it is also possible
 to do non-interactive trades with SpaceXpanse (as described in the general
 documentation for [atomic
-trades](https://github.com/xaya/xaya/blob/master/doc/xaya/trading.md)).
+trades](https://github.com/spacexpanse/rod-coin-wallet/blob/0.6.8/doc/spacexpanse/trading.md)).
 
 Each player or trader that is currently online has their own list of orders
 that they are willing to perform, e.g. sell 10 gold coins for 5 ROD each,
 or buy a Vorpal sword for 100 ROD.  These orders are published through
-a broadcast system, e.g. over XMPP with [XID](https://github.com/xaya/xid).
+a broadcast system, e.g. over XMPP with [SpeXID](https://github.com/spacexpanse/spexid).
 Other players can then choose an order they would like to accept.
 
 At that point in time, Democrit will (automatically) negotiate and finalise
@@ -105,7 +105,7 @@ try again with a different party.)
 
 Since they do not have the final transaction, they also do not know the
 `txid` of it yet (at least not for non-segwit transactions).  They can,
-however, use the [*bare hash* (`btxid`)](https://github.com/xaya/xaya/pull/105)
+however, use the [*bare hash* (`btxid`)](https://github.com/spacexpanse/rod-core-wallet/pull/105)
 of the transaction, since that won't change by the signatures of the
 counterparty and still identifies the trade uniquely.
 
