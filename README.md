@@ -1,7 +1,7 @@
 # Democrit
 
 Democrit is a protocol and system for executing [**atomic
-trades**](https://github.com/spacexpanse/rod-coin-wallet/blob/0.6.8/doc/spacexpanse/trading.md)
+trades**](https://github.com/spacexpanse/rod-core-wallet/blob/0.6.8/doc/spacexpanse/trading.md)
 on the SpaceXpanse platform.  This allows players to trade their game assets for
 cryptocurrency (ROD) in a fully trustless manner.
 
@@ -19,7 +19,7 @@ negotiating and finalising the trade.  This is the simplest and most
 flexbile way to do atomic trades, but in theory it is also possible
 to do non-interactive trades with SpaceXpanse (as described in the general
 documentation for [atomic
-trades](https://github.com/spacexpanse/rod-coin-wallet/blob/0.6.8/doc/spacexpanse/trading.md)).
+trades](https://github.com/spacexpanse/rod-core-wallet/blob/0.6.8/doc/spacexpanse/trading.md)).
 
 Each player or trader that is currently online has their own list of orders
 that they are willing to perform, e.g. sell 10 gold coins for 5 ROD each,
