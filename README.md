@@ -1,4 +1,4 @@
-# Democrit
+# Democrit Marketplace Framework /WIP/
 
 Democrit is a protocol and system for executing [**atomic
 trades**](https://github.com/spacexpanse/rod-core-wallet/blob/0.6.8/doc/spacexpanse/trading.md)
